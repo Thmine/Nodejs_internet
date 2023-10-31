@@ -9,9 +9,9 @@ const getimg = (req, res) => {
     res.render('sample.ejs')
 }
 
-const getABC = (req, res) => {
-    res.send('Show alphabet document')
+const sign_in = (req, res) => {
+    res.render('sign_in.ejs')
 }
 module.exports = {
-    getHomepage, getABC, getimg
+    getHomepage, sign_in, getimg
 }

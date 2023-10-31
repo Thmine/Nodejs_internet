@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.5;
+    background-color: #bbe4ee;
+}
+
+/******************** Form layout ********************/
+.form-container {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 32px;
+    border-radius: 16px;
+    background-color: #f1e3e3;
+}
+
+.form-container .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 0;
+}
+
+.form-container .label {
+    min-width: 150px;
+    font-weight: 500;
+}
+
+.form-container .input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.form-container .input:focus {
+    outline: 2px solid #0093e9;
+}
+
+a {
+    display: inline-block;
+    margin-left: 20px;
+    text-align: left;
+    margin-top: 20px;
+    text-decoration: none;
+    background-color: #4a8e78;
+    color: white;
+    padding: 20px 10px;
+    border-radius: 5px;
+}
