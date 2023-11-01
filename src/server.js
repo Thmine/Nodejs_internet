@@ -10,6 +10,10 @@ const app = express()
 const port = process.env.PORT || 8081
 const hostname = process.env.HOST_NAME
 
+//config req.body
+app.use(express.json()) //for json
+app.use(express.urlencoded({ extended: true }))
+
 //config template engine
 
 configViewEngine(app)
@@ -23,7 +27,7 @@ app.use('/', webRoutes) //tiền tố đầu tiên
 connection.query(
     'SELECT * FROM accounts',
     function (err, results, fields) {
-        console.log(results); // results contains rows returned by server
+        // console.log(results); // results contains rows returned by server
 
     }
 );

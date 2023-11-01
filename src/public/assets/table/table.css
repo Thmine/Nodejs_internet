@@ -1,47 +1,68 @@
+/* reset css về mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background-color: #accbd3;
+    background-color: #f0f5f5;
     font-family: 'Montserrat', sans-serif;
-}
-
-table {
-    width: 80%;
-    margin: 80px auto;
-    border-collapse: collapse;
-}
-
-th,
-td {
-    border: 2px solid rgb(12, 14, 10);
-    padding: 10px;
-    background-color: #86ba9d;
-    text-align: center;
-}
-
-th {
-    background-color: #4a8e78;
-    color: white;
-}
-
-tr:nth-child(even) {
-    background-color: #b0dab4;
-}
-
-tr:nth-child(odd) {
-    background-color: #86ba9d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+    /* Để định vị nút "Home" */
 }
 
 a {
-    display: inline-block;
-    margin-left: 20px;
-    text-align: left;
-    margin-top: 20px;
     text-decoration: none;
     background-color: #4a8e78;
     color: white;
-    padding: 20px 10px;
+    padding: 10px 20px;
     border-radius: 5px;
+    position: absolute;
+    /* Định vị nút "Home" */
+    top: 10px;
+    left: 10px;
+    transition: background-color 0.3s;
+    /* Hiệu ứng hover cho nút "Home" */
 }
 
 a:hover {
     background-color: #3c725d;
+}
+
+table {
+    width: 50%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+tr:nth-child(odd) {
+    background-color: #f2f2f2;
+    transition: background-color 0.3s;
+    /* Hiệu ứng màu nền từng dòng */
+}
+
+th,
+td {
+    padding: 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+    transition: transform 0.2s;
+    /* Hiệu ứng khi di chuột vào từng dòng */
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:hover {
+    background-color: #b0dab4;
+    /* Hiệu ứng màu nền khi di chuột vào từng dòng */
 }

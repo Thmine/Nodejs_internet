@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,7 @@
         rel="stylesheet" />
     <!------------ Styles ------------>
     <link rel="stylesheet" href="/assets/sign_in/sign_in.css" />
-    <title>Sign_in</title>
+    <title>Sign_up</title>
 
 
 </head>
@@ -20,14 +21,24 @@
     <a href="/home">Home</a>
     <!------------ Form layout ------------>
     <div class="form-container">
-        <form action="" class="form">
+        <form action="/create_user" class="form" method="post">
             <div class="row">
-                <label class="label" for="username">Tên đăng nhập:</label>
-                <input class="input" type="text" id="username" name="username" />
+                <label class="label">username</label>
+                <input class="input" type="text" name="username" />
             </div>
             <div class="row">
-                <label class="label" for="password">Mật khẩu:</label>
-                <input class="input" type="password" id="password" name="password" />
+                <label class="label">Password</label>
+                <input class="input" type="text" name="password" />
+            </div>
+
+            <div class="row">
+                <label class="label">Full_name</label>
+                <input class="input" type="text" name="full_name" />
+            </div>
+
+            <div class="row">
+                <label class="label">Email</label>
+                <input class="input" type="text" name="email" />
             </div>
             <div>
                 <button class="button">Submit</button>
