@@ -1,7 +1,7 @@
 const connection = require('../config/database')
+const { getAllaccounts } = require('../services/CRUDservices')
 
-const getHomepage = (req, res) => {
-
+const getHomepage = async (req, res) => {
     return res.render('home.ejs')
 }
 
@@ -17,15 +17,17 @@ const getsign_up = (req, res) => {
     res.render('sign_up.ejs')
 }
 
-const gettable = (req, res) => {
-    res.render('table.ejs')
+const gettable = async (req, res) => {
+    let results = await getAllaccounts()
+    return res.render('table.ejs', { listaccounts: results })
 }
+
 
 const getvideo = (req, res) => {
     res.render('video.ejs')
 }
 
-const postCreateUser = (req, res) => {
+const postCreateUser = async (req, res) => {
     //console.log("request.body:", req.body)
     let username = req.body.username
     let password = req.body.password
@@ -35,6 +37,7 @@ const postCreateUser = (req, res) => {
     //console.log("username", username, password, email, full_name)
     // INSERT INTO accounts (username, password, full_name, email)
     //     VALUES ('username', 'password', 'full_name', 'email');
+
     connection.query(
         `INSERT INTO accounts (username, password, full_name, email)
           VALUES (?, ?, ?, ?)
@@ -42,8 +45,26 @@ const postCreateUser = (req, res) => {
         [username, password, full_name, email],
         function (err, results) {
             console.log(results);
-            res.send(' <h1>CREATE USER SUCCESS!!</h1>')
+            res.send(` <!DOCTYPE html>
+            <html>
+            <head>
+                <script>
+                    function openPopup() {
+                        alert('FBI warning! Your IP address has been saved in the system for investigation');
+                        window.location.href = '/home'
+                    }
+                </script>
+            </head>
+            <body>
+            <h1>Account successfully created
+        </h1>
+            <button type="button" onclick="openPopup()">Click Me!</button>
+            
+            </body>
+            </html> `)
         });
+
+
 }
 
 module.exports = {

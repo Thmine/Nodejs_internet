@@ -14,33 +14,40 @@
 
 <body>
     <a href="/home">Home</a>
-    <table>
-        <tr>
-            <th>STT</th>
-            <th>Name</th>
-            <th>IDstudent</th>
-            <th>PhoneNumber</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Nguyễn Trung Kiên</td>
-            <td>B20DCVT203</td>
-            <td>999</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Chu Quang Minh</td>
-            <td>B20DCVT251</td>
-            <td>111</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Dương Thị Kiều Trang</td>
-            <td>B20DCVT...</td>
-            <td>222</td>
-        </tr>
-    </table>
+    <div class="table_container">
+        <div class="title">List user</div>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>User Name</th>
+                <th>Full Name</th>
+                <th>Mail</th>
+                <th>Action</th>
+            </tr>
+            <% for (let i=0; i < listaccounts.length; i++) { %>
+                <tr>
+                    <td>
+                        <%=listaccounts[i].account_id %>
+                    </td>
+                    <td>
+                        <%=listaccounts[i].username %>
+                    </td>
+                    <td>
+                        <%=listaccounts[i].full_name %>
+                    </td>
+                    <td>
+                        <%=listaccounts[i].email %>
+                    </td>
+                    <td>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </td>
+                </tr>
+                <% } %>
 
+
+        </table>
+    </div>
 </body>
 
 </html>
