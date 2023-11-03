@@ -1,6 +1,6 @@
 const { request } = require('express')
 const connection = require('../config/database')
-const { getAllaccounts } = require('../services/CRUDservices')
+const { getAllaccounts, getUpdateaccount } = require('../services/CRUDservices')
 
 const getHomepage = async (req, res) => {
     return res.render('home.ejs')
@@ -68,20 +68,49 @@ const postCreateUser = async (req, res) => {
 }
 
 const getUpdateUser = async (req, res) => {
-    const account_id = req.params.id
-
-    // let [results, fields] = await connection.query('select * from accounts where account_id=?', [account_id])
+    const account_id = req.params.id;
+    let user = await getUpdateaccount(account_id);
+    user = Array.isArray(user) ? user[0] : user
+    res.render('edit_user.ejs', { useredit: user })
+    console.log('>>>>this is user', user);
+}
+const postUpdateUser = async (req, res) => {
+    let username = req.body.username
+    let password = req.body.password
+    let email = req.body.email
+    let full_name = req.body.full_name
+    let userID = req.body.userID
+    console.log('email:', email, 'userID:', userID)
     connection.query(
-        `select * from accounts where account_id=?`,
-        [account_id],
+        `UPDATE accounts 
+        SET username = ?, password = ?, full_name=?, email=?
+        WHERE account_id= ?
+      `,
+        [username, password, full_name, email, userID],
         function (err, results) {
             console.log(results);
-            res.render('edit_user.ejs')
+            res.send(` <!DOCTYPE html>
+            <html>
+            <head>
+                <script>
+                    function openPopup() {
+                        alert('Update succesfully');
+                        window.location.href = '/home'
+                    }
+                </script>
+            </head>
+            <body>
+            <h1>Account successfully update
+        </h1>
+            <button type="button" onclick="openPopup()">Click Me!</button>
+            
+            </body>
+            </html> `)
         });
-    // console.log(req.params, account_id)
+
 
 }
 
 module.exports = {
-    getHomepage, getsign_in, getBieudo, gettable, getvideo, getsign_up, postCreateUser, getUpdateUser
+    getHomepage, getsign_in, getBieudo, gettable, getvideo, getsign_up, postCreateUser, getUpdateUser, postUpdateUser
 }

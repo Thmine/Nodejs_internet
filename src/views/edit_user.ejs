@@ -18,34 +18,39 @@
 </head>
 
 <body>
-    <a href="/home">Home</a>
-    <!------------ Form layout ------------>
-    <div class="form-container">
-        <form action="/create_user" class="form" method="post">
-            <h1 style="font-style: oblique;">Update a User</h1>
-            <div class="row">
-                <label class="label">username</label>
-                <input class="input" type="text" name="username" />
-            </div>
-            <div class="row">
-                <label class="label">Password</label>
-                <input class="input" type="text" name="password" />
-            </div>
+    <%=JSON.stringify(useredit)%>
+        <a href="/home">Home</a>
+        <!------------ Form layout ------------>
+        <div class="form-container">
+            <form action="/update_user" class="form" method="post">
+                <h1 style="font-style: oblique;">Update a User</h1>
+                <div class="dnone">
+                    <label class="label">ID:</label>
+                    <input class="input" type="text" name="userID" value="<%=useredit.account_id %>" />
+                </div>
+                <div class="row">
+                    <label class="label">username</label>
+                    <input class="input" type="text" name="username" value="<%=useredit.username %>" />
+                </div>
+                <div class="row">
+                    <label class="label">Password</label>
+                    <input class="input" type="text" name="password" value="<%=useredit.password %>" />
+                </div>
 
-            <div class="row">
-                <label class="label">Full_name</label>
-                <input class="input" type="text" name="full_name" />
-            </div>
+                <div class="row">
+                    <label class="label">Full_name</label>
+                    <input class="input" type="text" name="full_name" value="<%=useredit.full_name %>" />
+                </div>
 
-            <div class="row">
-                <label class="label">Email</label>
-                <input class="input" type="text" name="email" />
-            </div>
-            <div>
-                <button class="button">Submit</button>
-            </div>
-        </form>
-    </div>
+                <div class="row">
+                    <label class="label">Email</label>
+                    <input class="input" type="text" name="email" value="<%=useredit.email %>" />
+                </div>
+                <div>
+                    <button class="button">Submit</button>
+                </div>
+            </form>
+        </div>
 
 </body>
 

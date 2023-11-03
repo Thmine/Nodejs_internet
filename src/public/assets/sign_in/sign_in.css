@@ -88,3 +88,7 @@ a {
 .button:hover {
     background-color: #45a048;
 }
+
+.dnone {
+    display: none;
+}
