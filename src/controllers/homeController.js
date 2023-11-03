@@ -1,3 +1,4 @@
+const { request } = require('express')
 const connection = require('../config/database')
 const { getAllaccounts } = require('../services/CRUDservices')
 
@@ -64,9 +65,23 @@ const postCreateUser = async (req, res) => {
             </html> `)
         });
 
+}
+
+const getUpdateUser = async (req, res) => {
+    const account_id = req.params.id
+
+    // let [results, fields] = await connection.query('select * from accounts where account_id=?', [account_id])
+    connection.query(
+        `select * from accounts where account_id=?`,
+        [account_id],
+        function (err, results) {
+            console.log(results);
+            res.render('edit_user.ejs')
+        });
+    // console.log(req.params, account_id)
 
 }
 
 module.exports = {
-    getHomepage, getsign_in, getBieudo, gettable, getvideo, getsign_up, postCreateUser
+    getHomepage, getsign_in, getBieudo, gettable, getvideo, getsign_up, postCreateUser, getUpdateUser
 }

@@ -18,7 +18,7 @@ body {
     /* Để định vị nút "Home" */
 }
 
-a {
+.home {
     text-decoration: none;
     background-color: #4a8e78;
     color: white;
@@ -32,7 +32,7 @@ a {
     /* Hiệu ứng hover cho nút "Home" */
 }
 
-a:hover {
+.home:hover {
     background-color: #3c725d;
 }
 
