@@ -12,7 +12,7 @@
         rel="stylesheet" />
     <!------------ Styles ------------>
     <link rel="stylesheet" href="/assets/sign_in/sign_in.css" />
-    <title>Update</title>
+    <title>Delete a User</title>
 
 
 </head>
@@ -22,32 +22,18 @@
     <a href="/home">Home</a>
     <!------------ Form layout ------------>
     <div class="form-container">
-        <form action="/update_user" class="form" method="post">
-            <h1 style="font-style: oblique;">Update a User</h1>
+        <form action="/delete_user" class="form" method="post">
+            <h1 style="font-style: oblique;">Delete a User</h1>
             <div class="dnone">
                 <label class="label">ID:</label>
                 <input class="input" type="text" name="userID" value="<%=useredit.account_id %>" />
             </div>
             <div class="row">
-                <label class="label">username</label>
+                <label class="label">Are you sure delete user with username:</label>
                 <input class="input" type="text" name="username" value="<%=useredit.username %>" />
             </div>
-            <div class="row">
-                <label class="label">Password</label>
-                <input class="input" type="text" name="password" value="<%=useredit.password %>" />
-            </div>
-
-            <div class="row">
-                <label class="label">Full_name</label>
-                <input class="input" type="text" name="full_name" value="<%=useredit.full_name %>" />
-            </div>
-
-            <div class="row">
-                <label class="label">Email</label>
-                <input class="input" type="text" name="email" value="<%=useredit.email %>" />
-            </div>
             <div>
-                <button class="button">Submit</button>
+                <button class="button">Confirm</button>
             </div>
         </form>
     </div>

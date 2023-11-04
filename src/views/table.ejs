@@ -40,7 +40,11 @@
                     </td>
                     <td>
                         <a href="/update/<%=listaccounts[i].account_id %>" style="padding: 10%;">Edit</a>
-                        <button>Delete</button>
+
+                        <form action="/delete_user/<%=listaccounts[i].account_id %>" method="POST">
+                            <button>Delete</button>
+
+                        </form>
                     </td>
                 </tr>
                 <% } %>

@@ -72,7 +72,6 @@ const getUpdateUser = async (req, res) => {
     let user = await getUpdateaccount(account_id);
     user = Array.isArray(user) ? user[0] : user
     res.render('edit_user.ejs', { useredit: user })
-    console.log('>>>>this is user', user);
 }
 const postUpdateUser = async (req, res) => {
     let username = req.body.username
@@ -89,28 +88,58 @@ const postUpdateUser = async (req, res) => {
         [username, password, full_name, email, userID],
         function (err, results) {
             console.log(results);
-            res.send(` <!DOCTYPE html>
-            <html>
-            <head>
-                <script>
-                    function openPopup() {
-                        alert('Update succesfully');
-                        window.location.href = '/home'
-                    }
-                </script>
-            </head>
-            <body>
-            <h1>Account successfully update
-        </h1>
-            <button type="button" onclick="openPopup()">Click Me!</button>
-            
-            </body>
-            </html> `)
+            res.redirect('/table')
+            //     res.send(` <!DOCTYPE html>
+            //     <html>
+            //     <head>
+            //         <script>
+            //             function openPopup() {
+            //                 alert('Update succesfully');
+            //                 window.location.href = '/table'
+            //             }
+            //         </script>
+            //     </head>
+            //     <body>
+            //     <h1>Account successfully update
+            // </h1>
+            //     <button type="button" onclick="openPopup()">Click Me!</button>
+
+            //     </body>
+            //     </html> `)
         });
-
-
+}
+const postDeleteUser = async (req, res) => {
+    const userID = req.params.id;
+    let user = await getUpdateaccount(userID);
+    user = Array.isArray(user) ? user[0] : user
+    res.render('delete_user.ejs', { useredit: user })
+    console.log('delete user', user)
+    // res.render('delete_user.ejs')
 }
 
+// const postHandleRemoveUser = async (req, res) => {
+//     try {
+//         let userID = req.body.userID;
+//         await connection.query('DELETE FROM accounts WHERE account_id = ?', [userID]);
+//     } catch (err) {
+//     }
+//     res.redirect('/table')
+// }
+const postHandleRemoveUser = async (req, res) => {
+    try {
+        let userID = req.body.userID;
+        await connection.promise().query(
+            'DELETE FROM accounts WHERE account_id = ?', userID
+        );
+    } catch (err) {
+        console.error(err);
+    }
+    res.redirect('/table');
+}
+
+
+
 module.exports = {
-    getHomepage, getsign_in, getBieudo, gettable, getvideo, getsign_up, postCreateUser, getUpdateUser, postUpdateUser
+    getHomepage, getsign_in, getBieudo, gettable, getvideo, getsign_up, postCreateUser, getUpdateUser, postUpdateUser, postDeleteUser,
+    postHandleRemoveUser
 }

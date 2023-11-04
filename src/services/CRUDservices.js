@@ -23,6 +23,8 @@ const getUpdateaccount = (account_id) => {
     });
 }
 
+
+
 module.exports = {
     getAllaccounts, getUpdateaccount
 }
